@@ -2,92 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registration Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Q4 Drill 1</title>
+
+    <style>
+         #kWh, h3{
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+         }
+         body{
+            background: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(255, 170, 0));
+         }
+        
+    </style>
+    
 </head>
 <body>
-
-    <!-- 9E & 9R: Add your own JavaScript below before the closing </body> tag.
-         Use event handling and basic Math methods as discussed in class.
-         This will be part of your project. You may work with your partner. -->
-
-    <nav class="navbar">
-        <div class="logo">LOGO</div>
+    
+    
         
-        <img src="images/photo.jpg" class="https://yt3.googleusercontent.com/85iAlrSYtvSFR37n-vX6WO6ww7ZflYIjlg_x4CvveEDNaReJnLWNAQdUzEPZU80kdd6YB3ANbbw=s900-c-k-c0x00ffffff-no-rj">
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Fare Matrix</a></li>
-            <li><a href="#">Schedule</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
-        <div class="nav-buttons">
-            <a href="#" class="book">Book Now</a>
-            <a href="#" class="create-btn">Create Account</a>
-        </div>
-    </nav>
+        <div class="container w-75 rounded-5 d-flex justify-content-center align-items-center vh-100">
 
-    <section class="hero">
-
-        <div class="registration-card">
-
-            <div class="left-panel">
-                <div class="profile-placeholder">
-                    𝓟𝓻𝓸𝓯𝓲𝓵𝓮 𝓘𝓶𝓪𝓰𝓮...
-                </div>
-                <input type="file">
-                <button class="upload-btn">Ʉ₱ⱠØ₳Đ ₱ⱧØ₮Ø</button>
+            <div>
+            <h3>Electricity Consumption Classifier</h3>
             </div>
 
-            <div class="right-panel">
-                <h1>REGISTRATION</h1>
+            <div class="bg-dark text-light rounded-5 d-flex justify-content-center align-items-center p-3">
+            
+            
+            <img src="https://tse4.mm.bing.net/th/id/OIP.WQiuRuJ8IKrNxF9Zj701yQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" style="height: 80px; width: 130px;">
+            <br>
+            <h1 id="kWh" class="m-2">kWh</h1>
 
-                <p class="instructions">
-                    ᴾˡᵉᵃˢᵉ ᶠⁱˡˡ ᵒᵘᵗ ᵃˡˡ ʳᵉqᵘⁱʳᵉᵈ ᶠⁱᵉˡᵈˢ ⁱⁿ ᵗʰᵉ ʳᵉᵍⁱˢᵗʳᵃᵗⁱᵒⁿ ᶠᵒʳᵐ ʷⁱᵗʰ ᵃᶜᶜᵘʳᵃᵗᵉ ⁱⁿᶠᵒʳᵐᵃᵗⁱᵒⁿ.
-                </p>
+            <input type="text" class="form-control" id="consumption" placeholder="Input kilowatt per hour ?">
+        
+        
+        
 
-                <form>
-                    <label>First Name</label>
-                    <input type="text">
+        <button type="button" class="btn btn-warning m-2" onclick="check_class()" >Consumption Classification</button>
 
-                    <label>Last Name</label>
-                    <input type="text">
-
-                    <div class="row">
-                        <div>
-                            <label>Age</label>
-                            <input type="number">
-                        </div>
-                        <div>
-                            <label>Contact Number</label>
-                            <input type="text">
-                        </div>
-                    </div>
-
-                    <label>Email</label>
-                    <input type="email">
-
-                    <label>Enter your username</label>
-                    <input type="text">
-
-                    <label>Enter your password</label>
-                    <input type="password">
-
-                    <div class="terms">
-                        <input type="checkbox">
-                        <span>I accept the Terms of Use and Privacy Policy</span>
-                    </div>
-
-                    <button class="submit-btn">Create my account</button>
-                </form>
+        <br><br><p><span id="message1" style="color: rgb(0, 44, 238); " class="fst-italic"></span></p>
+        
             </div>
-
         </div>
-    </section>
+   
 
-    <footer>
-        Student Name | Grade & Section ©2026
-    </footer>
+    <script>
+        function check_class(){
+        
+            var checker = document.getElementById("consumption").value;
+            var A = "Lifeline Consumer"; //0-100kWh
+            var B = "Low Consumption"; //101-200kWh
+            var C = "Average Consumption"; //201-300kWh
+            var D = "High Consumption"; //301-500kWh
+            var E = "Very High Consumption"; //above 500kWh
 
+            // Check for invalid input (negative or non-numeric)
+            if (isNaN(checker) || checker < 0) {
+                document.getElementById("message1").innerHTML = "Please input a valid number.";
+                
+            }
+        
+            else if (checker <= 100) {
+                alert(A + " : Discounted electricity rates to help low-income households.");
+                window.location.reload();
+            }
+            
+            else if (checker <= 200) {
+                alert(B + " : Normal residential rate.");
+                window.location.reload();
+            }
+        
+            else if (checker <= 300) {
+                alert(C + " : Typical electricity usage.");
+                window.location.reload();
+            }
+            
+            else if (checker <= 500) {
+                alert(D + " : Higher electricity usage.");
+                window.location.reload();
+            }
+        
+            else {
+                alert(E + " : Heavy electricity users. ");
+                window.location.reload();
+            }
+        }
+    </script>
+    
 </body>
 </html>
